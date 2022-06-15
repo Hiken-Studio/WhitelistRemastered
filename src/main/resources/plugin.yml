@@ -1,0 +1,12 @@
+name: WhitelistRemastered
+main: hiken.whitelistremastered.WhitelistRemastered
+version: ${project.version}
+api-version: 1.18
+author: Ammissione
+description: Manages your whitelist in a completely new way
+
+commands:
+  wr:
+    usage: /wr <add|rem|toggle|list|status|reload>
+    permission: whitelistremastered.admin
+    description: This command allows you to have the full control of the whitelist

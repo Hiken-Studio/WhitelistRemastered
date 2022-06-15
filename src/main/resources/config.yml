@@ -1,0 +1,35 @@
+storage:
+  host: "localhost"
+  port: 3306
+  user: "root"
+  password: "whitelist_123"
+  database-name: "WhitelistRemastered"
+
+settings:
+  whitelist-on: false
+  console-enabled: true
+
+messages:
+  no-console: "&2&lW&b&lR &8| &cYou can't execute this command via console"
+  no-perms: "&2&lW&b&lR &8| &cYou don't have access to this command"
+  config-reloaded: "&2&lW&b&lR &8| &aConfiguration file has been reloaded"
+  command-usage: "&2&lW&b&lR &8| &cCorrect usage for the command is /wr <add|rem|toggle|status|list|reload>"
+  kick-no-whitelisted-player: "&2&lW&b&lR &8| &cYou can't join the server right now"
+  subcommands:
+    add:
+      usage: "&2&lW&b&lR &8| &cInvalid command usage! Try /wr add <player>"
+      player-already-in-whitelist: "&2&lW&b&lR &8| &c{playerName} is already whitelisted"
+      player-added: "&2&lW&b&lR &8| &aYou added {playerName} to the whitelist"
+    rem:
+      usage: "&2&lW&b&lR &8| &cInvalid command usage! Try /wr rem <player>"
+      player-not-in-whitelist: "&2&lW&b&lR &8| &c{playerName} is not whitelisted"
+      player-removed: "&2&lW&b&lR &8| &aYou removed {playerName} from the whitelist"
+    toggle:
+      turned-on: "&2&lW&b&lR &8| &aWhitelist is now on"
+      turned-off: "&2&lW&b&lR &8| &aWhitelist is now off"
+    status:
+      whitelist-off: "&2&lW&b&lR &8| &fWhitelist is &c&lOFF"
+      whitelist-on: "&2&lW&b&lR &8| &fWhitelist is &a&lON"
+    list:
+      no-players: "&2&lW&b&lR &8| &cNo player is whitelisted"
+      allowed-players: "&2&lW&b&lR &8| &aWhitelist users &7(&a{totalUsers}&7) &8| &f{usersList}"
