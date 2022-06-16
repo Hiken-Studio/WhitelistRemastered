@@ -4,7 +4,6 @@ import hiken.whitelistremastered.commands.WhitelistCommand;
 import hiken.whitelistremastered.events.PlayerJoin;
 import hiken.whitelistremastered.utils.DatabaseManager;
 import lombok.Getter;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,7 +29,6 @@ public class WhitelistRemastered extends JavaPlugin {
         databaseManager.setupConnection();
         this.getCommand("wr").setExecutor(new WhitelistCommand());
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
-        new Metrics(this, 15479);
     }
 
     public void onDisable() {
