@@ -13,13 +13,14 @@ messages:
   no-console: "&2&lW&b&lR &8| &cYou can't execute this command via console"
   no-perms: "&2&lW&b&lR &8| &cYou don't have access to this command"
   config-reloaded: "&2&lW&b&lR &8| &aConfiguration file has been reloaded"
-  command-usage: "&2&lW&b&lR &8| &cCorrect usage for the command is /wr <add|rem|toggle|status|list|reload>"
+  command-usage: "&2&lW&b&lR &8| &cCorrect usage for the command is /wr <add|rem|toggle|change|list|status|reload>"
   kick-no-whitelisted-player: "&2&lW&b&lR &8| &cYou can't join the server right now"
+  ip-address-does-not-match: "&2&lW&b&lR &8| &cIP addresses doesn't matches"
   subcommands:
     add:
-      usage: "&2&lW&b&lR &8| &cInvalid command usage! Try /wr add <player>"
+      usage: "&2&lW&b&lR &8| &cInvalid command usage! Try /wr add <player> <playerIP>"
       player-already-in-whitelist: "&2&lW&b&lR &8| &c{playerName} is already whitelisted"
-      player-added: "&2&lW&b&lR &8| &aYou added {playerName} to the whitelist"
+      player-added: "&2&lW&b&lR &8| &aYou added {playerName} ({playerIP}) to the whitelist"
     rem:
       usage: "&2&lW&b&lR &8| &cInvalid command usage! Try /wr rem <player>"
       player-not-in-whitelist: "&2&lW&b&lR &8| &c{playerName} is not whitelisted"
@@ -33,3 +34,6 @@ messages:
     list:
       no-players: "&2&lW&b&lR &8| &cNo player is whitelisted"
       allowed-players: "&2&lW&b&lR &8| &aWhitelist users &7(&a{totalUsers}&7) &8| &f{usersList}"
+    change:
+      usage: "&2&lW&b&lR &8| &cInvalide command usage! Try /wr change <player> <playerIP>"
+      ip-changed: "&2&lW&b&lR &8| &aYou've changed {playerName}'s IP address to {playerIP}"

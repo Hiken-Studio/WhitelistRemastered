@@ -27,7 +27,7 @@ public class WhitelistCommand implements CommandExecutor {
             }
             String subCommand = args[0];
             if(subCommand.equalsIgnoreCase("add")) {
-                if(args[1] == null) {
+                if(args.length < 2) {
                     cs.sendMessage(instance.color(instance.getConfig().getString("messages.subcommands.add.usage")));
                     return true;
                 }
@@ -38,10 +38,11 @@ public class WhitelistCommand implements CommandExecutor {
                     ));
                     return true;
                 }
-                instance.getDatabaseManager().addPlayerToWhitelist(args[1]);
+                instance.getDatabaseManager().addPlayerToWhitelist(args[1], args[2]);
                 cs.sendMessage(instance.color(
                         instance.getConfig().getString("messages.subcommands.add.player-added")
                                 .replace("{playerName}", args[1])
+                                .replace("{playerIP}", args[2])
                 ));
                 return true;
             }
@@ -119,6 +120,23 @@ public class WhitelistCommand implements CommandExecutor {
                 );
                 return true;
             }
+            if(subCommand.equalsIgnoreCase("change")) {
+                if(args.length < 2) {
+                    cs.sendMessage(instance.color(instance.getConfig().getString("messages.subcommands.change.usage")));
+                    return true;
+                }
+                if(instance.getDatabaseManager().isPlayerInWhitelist(args[1])) {
+                    instance.getDatabaseManager().updatePlayerIP(args[1], args[2]);
+                    cs.sendMessage(
+                            instance.color(
+                                    instance.getConfig().getString("messages.subcommands.change.ip-changed")
+                                            .replace("{playerName}", args[1])
+                                            .replace("{playerIP}", args[2])
+                            )
+                    );
+                    return true;
+                }
+            }
             if(subCommand.equalsIgnoreCase("reload")) {
                 cs.sendMessage(
                         instance.color(
@@ -144,7 +162,7 @@ public class WhitelistCommand implements CommandExecutor {
         }
         String subCommand = args[0];
         if(subCommand.equalsIgnoreCase("add")) {
-            if(args[1] == null) {
+            if(args.length < 2) {
                 player.sendMessage(instance.color(instance.getConfig().getString("messages.subcommands.add.usage")));
                 return true;
             }
@@ -155,10 +173,11 @@ public class WhitelistCommand implements CommandExecutor {
                 ));
                 return true;
             }
-            instance.getDatabaseManager().addPlayerToWhitelist(args[1]);
+            instance.getDatabaseManager().addPlayerToWhitelist(args[1], args[2]);
             player.sendMessage(instance.color(
                     instance.getConfig().getString("messages.subcommands.add.player-added")
                             .replace("{playerName}", args[1])
+                            .replace("{playerIP}", args[2])
             ));
             return true;
         }
@@ -243,6 +262,23 @@ public class WhitelistCommand implements CommandExecutor {
             );
             instance.reloadConfig();
             return true;
+        }
+        if(subCommand.equalsIgnoreCase("change")) {
+            if(args.length < 2) {
+                player.sendMessage(instance.color(instance.getConfig().getString("messages.subcommands.change.usage")));
+                return true;
+            }
+            if(instance.getDatabaseManager().isPlayerInWhitelist(args[1])) {
+                instance.getDatabaseManager().updatePlayerIP(args[1], args[2]);
+                player.sendMessage(
+                        instance.color(
+                                instance.getConfig().getString("messages.subcommands.change.ip-changed")
+                                        .replace("{playerName}", args[1])
+                                        .replace("{playerIP}", args[2])
+                        )
+                );
+                return true;
+            }
         }
         return true;
     }

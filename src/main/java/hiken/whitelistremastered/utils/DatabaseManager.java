@@ -35,12 +35,15 @@ public class DatabaseManager {
     }
 
     void setupUsersTable() throws SQLException {
-        String query = "CREATE TABLE IF NOT EXISTS users (Name VARCHAR(16));";
+        String query = "CREATE TABLE IF NOT EXISTS users (" +
+                "Name VARCHAR(16)," +
+                "PlayerIP VARCHAR(64)" +
+        ");";
         getConnection().prepareStatement(query).execute();
     }
 
-    public void addPlayerToWhitelist(String playerName) {
-        String query = "INSERT INTO users VALUES ('" + playerName + "');";
+    public void addPlayerToWhitelist(String playerName, String playerIP) {
+        String query = "INSERT INTO users VALUES ('" + playerName + "', '"+ playerIP + "');";
         try {
             getConnection().prepareStatement(query).execute();
         } catch(SQLException e) {
@@ -54,6 +57,29 @@ public class DatabaseManager {
         try {
             getConnection().prepareStatement(query).execute();
         } catch(SQLException e) {
+            instance.error("An error occurred");
+            e.printStackTrace();
+        }
+    }
+
+    public String getPlayerIP(String playerName) {
+        String query = "SELECT PlayerIP FROM users WHERE Name = '" + playerName + "';";
+        String playerIP = "";
+        try {
+            ResultSet resultSet = getConnection().prepareStatement(query).executeQuery();
+            playerIP = resultSet.getString("PlayerIP");
+        }catch(SQLException e) {
+            instance.error("An error occurred");
+            e.printStackTrace();
+        }
+        return playerIP;
+    }
+
+    public void updatePlayerIP(String playerName, String playerIP) {
+        String query = "UPDATE users SET PlayerIP = '" + playerIP + "' WHERE Name = '" + playerName + "';";
+        try {
+            getConnection().prepareStatement(query).execute();
+        }catch(SQLException e) {
             instance.error("An error occurred");
             e.printStackTrace();
         }

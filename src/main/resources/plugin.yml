@@ -8,6 +8,6 @@ website: https://discord.gg/Dth5SSMhRr
 
 commands:
   wr:
-    usage: /wr <add|rem|toggle|list|status|reload>
+    usage: /wr <add|rem|toggle|change|list|status|reload>
     permission: whitelistremastered.admin
     description: This command allows you to have the full control of the whitelist

@@ -20,6 +20,16 @@ public class PlayerJoin implements Listener {
                                 instance.getConfig().getString("messages.kick-no-whitelisted-player")
                         )
                 );
+                return;
+            }
+            String joiningPlayerIP = joiner.getAddress().getAddress().getHostAddress();
+            String whitelistedPlayerIP = instance.getDatabaseManager().getPlayerIP(joiner.getName());
+            if(!joiningPlayerIP.equals(whitelistedPlayerIP)) {
+                joiner.kickPlayer(
+                        instance.color(
+                                instance.getConfig().getString("messages.ip-address-does-not-match")
+                        )
+                );
             }
         }
     }

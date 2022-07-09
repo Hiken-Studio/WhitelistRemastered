@@ -1,15 +1,17 @@
 # WhitelistRemastered
 This plugin allows you to manage your whitelist in a completely new way.
+Current version **1.2**
 
 ## Main Command
 The plugin main and only command is `/wr` which allows you to choose a subcommand from:
 
-- `/wr add <playerName>` ➤ Adds a player to the whitelist
+- `/wr add <playerName> <playerIP>` ➤ Adds a player to the whitelist
 - `/wr rem <playerName>` ➤ Removes a player from the whitelist
 - `/wr toggle` ➤ Enables/Disables the whitelist
 - `/wr status` ➤ Shows you the status of the whitelist
 - `/wr list` ➤ Shows you how many players are in the whitelist and their names
 - `/wr reload` ➤ Reloads the configuration file
+- `/wr change <playerName> <playerIP>`
 
 ## Permissions
 The plugin has only one permission which is `whitelistremastered.admin` and allwos you to access all the commnads above.
